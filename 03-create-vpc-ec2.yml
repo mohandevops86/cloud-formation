@@ -1,0 +1,144 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+### Parameters
+Parameters: 
+  InstanceTypeParameter: 
+    Type: String
+    Default: t2.micro
+    AllowedValues: 
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
+
+
+### Mappings
+Mappings:
+  AMIMAP: 
+    us-east-2: 
+      "64": "ami-d9c3f5bc"
+
+
+### Resources 
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: 'false'
+      EnableDnsHostnames: 'false'
+      InstanceTenancy: default
+      Tags:
+      - Key: Name
+        Value: student
+
+  IGW:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+      - Key: Name
+        Value: IGW-STUDENT
+        
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: VPC
+      InternetGatewayId:
+        Ref: IGW
+
+  PubSubnetAZa:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: "us-east-2a"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZa
+
+  PubSubnetAZb:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: "us-east-2b"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZb
+
+  PubSubnetAZc:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: "us-east-2c"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZc
+
+  PriSubnetAZa:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.3.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZa
+
+  PriSubnetAZb:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.4.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZb
+
+  PriSubnetAZc:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.5.0/24
+      AvailabilityZone: "us-east-2c"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZc
+
+  SgDefault:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH PORT
+      VpcId:
+        Ref: VPC
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: '-1'
+        CidrIp: 0.0.0.0/0
+
+  Ec2InstancePUBAZa: 
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: !FindInMap [ AMIMAP, us-east-2, 64 ]
+      InstanceType: 
+        - Ref: InstanceTypeParameter
+      KeyName: devops
+      SecurityGroupIds: 
+        - Ref: SgDefault
+      SubnetId: 
+        Ref: PubSubnetAZa

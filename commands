@@ -1,0 +1,211 @@
+  886  aws ec2 describe-instances
+  890  cd .aws
+  891  aws configure
+  892  aws codebuild help
+  893  aws codebuild start-build help
+  894  aws codebuild start-build --project-name student-build
+  898  aws help
+  899  aws  cloudformation help
+  900  aws  cloudformation create-stack help
+  901  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.yml 
+  902  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.yml  
+  905  aws cloudformation create-stack --stack-name myteststack --template-body 01
+  906  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  908  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  910  aws cloudformation validate-template  --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  912  aws cloudformation create-stack --stack-name myteststack --template-body file://test.yml
+  918  aws cloudformation create-stack --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  919  aws cloudformation help
+  920  aws cloudformation delete-stack --stack-name  myteststack
+  921  aws cloudformation create-stack --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  922  aws cloudformation help
+  923  aws cloudformation update-stack  --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  925  history | grep ^aws >commands
+  934  aws cloudformation delete-stack --stack-name  myteststack
+  936  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  937  aws cloudformation log
+  938  aws cloudformation wait help
+  939  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  940  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  941  aws cloudformation delete-stack --stack-name  myteststack
+  942  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  943  aws   stack-create-complete
+  945  aws  cloudformation stack-create-complete
+  946  aws  cloudformation wait dskds
+  947  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  948  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  949  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  950  aws cloudformation delete-stack --stack-name  myteststack
+  951  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  952  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  954  aws cloudformation delete-stack --stack-name  myteststack
+  955  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  956  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  958  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  959  aws cloudformation delete-stack --stack-name  myteststack
+  968  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  969  aws cloudformation delete-stack --stack-name  myteststack
+  970  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  971  aws cloudformation create-stack help
+  972  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  973  aws cloudformation delete-stack --stack-name  myteststack
+  974  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  975  aws cloudformation delete-stack --stack-name  myteststack
+  977  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro 
+  978  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceType,ParameterValue=t2.micro 
+  979  aws cloudformation delete-stack --stack-name  param
+  980  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceType,ParameterValue=t2.micro 
+  981  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro 
+  982  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  983  aws cloudformation delete-stack --stack-name  param
+  984  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  985  aws cloudformation delete-stack --stack-name  param
+  986  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  987  aws cloudformation delete-stack --stack-name  param
+  988  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  989  aws cloudformation delete-stack --stack-name  param
+  990  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro ParameterKey=myKeyPair,ParameterValue=devops
+  991  aws cloudformation delete-stack --stack-name  param
+  992  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  994  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  995  aws cloudformation delete-stack --stack-name  param
+  996  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  997  aws cloudformation delete-stack --stack-name  param
+  998  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  999  aws cloudformation delete-stack --stack-name  param
+ 1000  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+ 1005  history | grep aws >>commands
+################################ Sat Mar 17 03:22:39 UTC 2018
+  795  aws ec2 describe-instances
+  799  cd .aws
+  800  aws configure
+  801  aws codebuild help
+  802  aws codebuild start-build help
+  803  aws codebuild start-build --project-name student-build
+  807  aws help
+  808  aws  cloudformation help
+  809  aws  cloudformation create-stack help
+  810  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.yml 
+  811  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.yml  
+  814  aws cloudformation create-stack --stack-name myteststack --template-body 01
+  815  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  817  aws cloudformation create-stack --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  819  aws cloudformation validate-template  --stack-name myteststack --template-body 01-create-onlyvpc.json 
+  821  aws cloudformation create-stack --stack-name myteststack --template-body file://test.yml
+  827  aws cloudformation create-stack --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  828  aws cloudformation help
+  829  aws cloudformation delete-stack --stack-name  myteststack
+  830  aws cloudformation create-stack --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  831  aws cloudformation help
+  832  aws cloudformation update-stack  --stack-name myteststack --template-body file://01-create-onlyvpc.yml
+  834  history | grep ^aws >commands
+  843  aws cloudformation delete-stack --stack-name  myteststack
+  845  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  846  aws cloudformation log
+  847  aws cloudformation wait help
+  848  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  849  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  850  aws cloudformation delete-stack --stack-name  myteststack
+  851  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  852  aws   stack-create-complete
+  854  aws  cloudformation stack-create-complete
+  855  aws  cloudformation wait dskds
+  856  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  857  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  858  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  859  aws cloudformation delete-stack --stack-name  myteststack
+  860  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  861  aws  cloudformation wait stack-create-complete --stack-name myteststack 
+  863  aws cloudformation delete-stack --stack-name  myteststack
+  864  aws cloudformation create-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  865  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  867  aws cloudformation update-stack --stack-name myteststack --template-body file://02-create-vpc-subnet-igw.yml
+  868  aws cloudformation delete-stack --stack-name  myteststack
+  877  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  878  aws cloudformation delete-stack --stack-name  myteststack
+  879  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  880  aws cloudformation create-stack help
+  881  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  882  aws cloudformation delete-stack --stack-name  myteststack
+  883  aws cloudformation create-stack --stack-name myteststack --template-body file://03-create-vpc-ec2.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro && aws  cloudformation wait stack-create-complete --stack-name myteststack
+  884  aws cloudformation delete-stack --stack-name  myteststack
+  886  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro 
+  887  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceType,ParameterValue=t2.micro 
+  888  aws cloudformation delete-stack --stack-name  param
+  889  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceType,ParameterValue=t2.micro 
+  890  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro 
+  891  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  892  aws cloudformation delete-stack --stack-name  param
+  893  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  894  aws cloudformation delete-stack --stack-name  param
+  895  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  896  aws cloudformation delete-stack --stack-name  param
+  897  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro,ResolvedValue=string 
+  898  aws cloudformation delete-stack --stack-name  param
+  899  aws cloudformation create-stack --stack-name param --template-body file://parameters.yml --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro ParameterKey=myKeyPair,ParameterValue=devops
+  900  aws cloudformation delete-stack --stack-name  param
+  901  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  903  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  904  aws cloudformation delete-stack --stack-name  param
+  905  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  906  aws cloudformation delete-stack --stack-name  param
+  907  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  908  aws cloudformation delete-stack --stack-name  param
+  909  aws cloudformation create-stack --stack-name param --template-body file://outputs.yml
+  914  history | grep aws >>commands
+  944  aws cloudformation create-stack --stack-name param --template-body file://conditions.yml
+  945  aws cloudformation delete-stack --stack-name  param
+  946  aws cloudformation create-stack --stack-name param --template-body file://conditions.yml
+  948  aws cloudformation create-stack --stack-name param --template-body file://conditions.yml
+  949  aws cloudformation create-stack --stack-name param --template-body file://conditions.yml ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV
+  950  aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV
+  951  G; aws cloudformation delete-stack --stack-name  param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV
+  952  aws cloudformation wait
+  953  aws cloudformation wait help
+  954  aws cloudformation wait stack-delete-complete --stack-name param
+  955  G; aws cloudformation delete-stack --stack-name  param ; aws cloudformation wait stack-delete-complete --stack-name param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV
+  956  G; aws cloudformation delete-stack --stack-name  param ; aws cloudformation wait stack-delete-complete --stack-name param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV;aws cloudformation wait stack-create-complete --stack-name param
+  957  G; aws cloudformation delete-stack --stack-name  param ; aws cloudformation wait stack-delete-complete --stack-name param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=PROD;aws cloudformation wait stack-create-complete --stack-name param
+  965  aws cloudformation delete-stack --stack-name  param ; aws cloudformation wait stack-delete-complete --stack-name param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=DEV
+  966  aws cloudformation delete-stack --stack-name  param ; aws cloudformation wait stack-delete-complete --stack-name param ; aws cloudformation create-stack --stack-name param --template-body file://conditions.yml --parameters ParameterKey=myKeyPair,ParameterValue=devops ParameterKey=EnvType,ParameterValue=PROD ;aws cloudformation wait stack-create-complete --stack-name param
+  968  aws cloudformation delete-stack --stack-name  param
+  969  aws cloudformation create-stack --stack-name appstack --template-body file://stack.yml 
+  970  aws cloudformation create-stack --stack-name appstack --template-body file://stack.yml  --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro
+  971  aws cloudformation delete-stack --stack-name appstack ; aws cloudformation wait stack-delete-complete --stack-name appstack ; aws cloudformation create-stack --stack-name appstack --template-body file://stack.yml  --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro; aws cloudformation wait stack-create-complete --stack-name appstack
+  972  aws cloudformation delete-stack --stack-name appstack
+  973  aws cloudformation delete-stack --stack-name appstack ; aws cloudformation wait stack-delete-complete --stack-name appstack ; aws cloudformation create-stack --stack-name appstack --template-body file://stack.yml  --parameters ParameterKey=InstanceTypeParameter,ParameterValue=t2.micro; aws cloudformation wait stack-create-complete --stack-name appstack
+  990  aws cloudformation create-stack --stack-name db --template-body file://04-vpc-rds.yml
+  991  aws cloudformation delete-stack --stack-name db ; aws cloudformation wait stack-delete-complete --stack-name db
+  992  G;aws cloudformation delete-stack --stack-name db ; aws cloudformation wait stack-delete-complete --stack-name db;aws cloudformation create-stack --stack-name db --template-body file://04-vpc-rds.yml;aws cloudformation wait stack-create-complete --stack-name db
+  994  G;aws cloudformation delete-stack --stack-name db ; aws cloudformation wait stack-delete-complete --stack-name db;aws cloudformation create-stack --stack-name db --template-body file://04-vpc-rds.yml;aws cloudformation wait stack-create-complete --stack-name db
+  995  aws cloudformation delete-stack --stack-name db 
+  996  G;aws cloudformation delete-stack --stack-name dbec2 ; aws cloudformation wait stack-delete-complete --stack-name dbec2 ; aws cloudformation create-stack --stack-name dbec2 --template-body file://rds+ec2.yml
+  998  G;aws cloudformation delete-stack --stack-name dbec2 ; aws cloudformation wait stack-delete-complete --stack-name dbec2 ; aws cloudformation create-stack --stack-name dbec2 --template-body file://rds+ec2.yml
+  999  aws cloudformation wait stack-create-complete --stack-name dbec2 
+ 1000  G;aws cloudformation delete-stack --stack-name dbec2 ; aws cloudformation wait stack-delete-complete --stack-name dbec2 ; aws cloudformation create-stack --stack-name dbec2 --template-body file://rds+ec2.yml ; aws cloudformation wait stack-create-complete --stack-name dbec2
+ 1001  aws codedeploy help
+ 1002  aws deploy help
+ 1003  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=Sample.zip
+ 1004  aws deploy wait  deployment-successful --deployment-id d-N06CFUVMQ
+ 1016  aws s3 help
+ 1017  aws s3 cp help
+ 1018  aws s3 cp cloud-formation/code-deploy/Sample.zip s3://stu-proj-build
+ 1019  aws s3 cp cloud-formation/code-deploy/Sample.zip s3://stu-proj-build ; aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=Sample.zip
+ 1021  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build/target/student-build,bundleType=zip,key=student.zip
+ 1022  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location s3://stu-proj-build/target/student-build/student.zip
+ 1023  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=target/student-build/student.zip
+ 1024  aws codebuild
+ 1025  aws codebuild help
+ 1026  aws codebuild start-build 
+ 1027  aws codebuild start-build help
+ 1028  aws codebuild start-build --project-name student
+ 1029  aws codebuild start-build --project-name student-build
+ 1030  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=target/student-build/student.zip
+ 1031  aws codebuild start-build --project-name student-build
+ 1032  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=target/student-build/student.zip
+ 1033  aws codebuild start-build --project-name student-build
+ 1034  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=target/student-build/student.zip
+ 1035  aws codebuild start-build --project-name student-build
+ 1036  aws codebuild help
+ 1037  aws deploy create-deployment --application-name STUDENT --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name PROD-DEPLOY --description "My demo deployment" --s3-location bucket=stu-proj-build,bundleType=zip,key=target/student-build/student.zip
+ 1079  history | grep aws >>commands

@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - mvn package
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+      #- zip -r target.zip target
+      - cp target/*.war student.war
+      - zip -r student.zip student.war appspec.yml Scripts
+artifacts:
+  files:
+    - student.zip 
+    - student.war
+    - appspec.yml 
+    - Scripts/*

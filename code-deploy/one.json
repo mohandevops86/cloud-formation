@@ -1,0 +1,36 @@
+{
+"Parameters": {
+        "KeyName": {
+        "Description": "Describe key name",
+        "Type": "AWS::EC2::KeyPair::KeyName",
+        "ConstraintDescription": "must be the name of an existing EC2 KeyPair.",
+        "MinLength": 8,
+        "MaxLength": 35,
+        "AllowedPattern": "[0-9a-zA-Z]+"}
+        },
+        "Metadata": {
+           "AWS::CloudFormation::Designer": {
+                "3088fe53-c967-4b4b-8d0d-fcdfb5ea7a23": {
+                    "size": {
+                    "width": 40,
+                    "height": 40 }, 
+           "SNC::Parameter::Metadata": {
+                 "KeyName":{
+                    "ReferenceType":"AWS::EC2::KeyPair::KeyName"
+                 }
+            }
+         }  
+       }
+    },
+
+"Resources" : {
+      "mySubnet" : {
+         "Type" : "AWS::EC2::Subnet",
+         "Properties" : {
+            "VpcId" : "vpc-4271752b",
+            "CidrBlock" : "10.0.0.0/24",
+            "Tags" : [ { "Key" : "foo", "Value" : "bar" } ]
+         }
+      }
+   }
+}

@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+### Parameters
+ 
+Resources:
+  Ec2Instance: 
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: ami-d9c3f5bc
+      InstanceType: t2.micro
+      KeyName: devops
+      SecurityGroupIds: 
+        - sg-9d2ebff5
+      SubnetId: subnet-dcf4e1b5
+
+Outputs:
+  PublicIP:
+    Description: Public IP of EC2 
+    Value: 
+      Fn::GetAtt: [ Ec2Instance, PublicIp ]

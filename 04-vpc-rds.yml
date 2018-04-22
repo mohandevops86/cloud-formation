@@ -1,0 +1,174 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+### Resources 
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: 'false'
+      EnableDnsHostnames: 'false'
+      InstanceTenancy: default
+      Tags:
+      - Key: Name
+        Value: student
+
+  IGW:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+      - Key: Name
+        Value: IGW-STUDENT
+        
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: VPC
+      InternetGatewayId:
+        Ref: IGW
+
+  RouteTPublicAZa:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: VPC
+      Tags:
+      - Key: Name
+        Value: RouteTPublicAZa
+      
+  RoutePublicAZa:
+    Type: AWS::EC2::Route
+    DependsOn: RouteTPublicAZa
+    Properties:
+      RouteTableId:
+        Ref: RouteTPublicAZa
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: IGW
+
+  PubSubnetAZa:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: "us-east-2a"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZa
+
+  AZaRouteAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PubSubnetAZa
+      RouteTableId:
+        Ref: RouteTPublicAZa
+
+  PubSubnetAZb:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: "us-east-2b"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZb
+
+  PubSubnetAZc:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: "us-east-2c"
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: PubSubnetAZc
+
+  PriSubnetAZa:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.3.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZa
+
+  PriSubnetAZb:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.4.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZb
+
+  PriSubnetAZc:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: 10.0.5.0/24
+      AvailabilityZone: "us-east-2c"
+      Tags:
+      - Key: Name
+        Value: PriSubnetAZc
+
+  SgDefault:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow MariaDB port
+      VpcId:
+        Ref: VPC
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '3306'
+        ToPort: '3306'
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: '-1'
+        CidrIp: 0.0.0.0/0
+
+  DBSubnetGroup: 
+    Type: "AWS::RDS::DBSubnetGroup"
+    Properties: 
+      DBSubnetGroupDescription: "DB Subnet Group"
+      SubnetIds: 
+        - Ref: PriSubnetAZa
+        - Ref: PriSubnetAZb
+        - Ref: PriSubnetAZc
+      Tags: 
+        - 
+          Key: "Name"
+          Value: "DB Subnet Group"
+
+  MyDB: 
+    Type: "AWS::RDS::DBInstance"
+    Properties: 
+      DBName: studentapp
+      AllocatedStorage: "10"
+      DBInstanceClass: "db.t2.micro"
+      Engine: "MySQL"
+      EngineVersion: "5.5"
+      DBSubnetGroupName: 
+        Ref: DBSubnetGroup
+      MasterUsername: "student"
+      MasterUserPassword: "student123"
+      Tags: 
+        - 
+          Key: "Name"
+          Value: "studentapp"
+    #DeletionPolicy: "Snapshot"
+
+  
+

@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: student.war
+    destination: /root/apache-tomcat-8.5.29/webapps 
+
+hooks:
+  BeforeInstall:
+    - location: before.sh
+  
+  ApplicationStart:
+    - location: after.sh

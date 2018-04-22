@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+### Parameters
+Parameters: 
+  InstanceTypeParameter: 
+    Type: String
+    Default: t2.micro
+    AllowedValues: 
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
+
+  myKeyPair: 
+    Description: Amazon EC2 Key Pair
+    Type: "AWS::EC2::KeyPair::KeyName"
+  
+Resources:
+  Ec2Instance: 
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: ami-d9c3f5bc
+      InstanceType: 
+        Ref: InstanceTypeParameter
+      KeyName: 
+        Ref: myKeyPair
+      SecurityGroupIds: 
+        - sg-9d2ebff5
+      SubnetId: subnet-dcf4e1b5

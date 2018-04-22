@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+### Parameters
+Parameters: 
+  myKeyPair: 
+    Description: Amazon EC2 Key Pair
+    Type: "AWS::EC2::KeyPair::KeyName"
+
+  EnvType:
+    Description: Select the stack environment 
+    Type: String 
+    AllowedValues: [ PROD, DEV ]
+    ConstraintDescription: You must select an environment
+
+Mappings:
+  AMIMAP: 
+    us-east-2: 
+      "64": "ami-d9c3f5bc"
+
+Conditions: 
+  CreateProdResources: !Equals [ !Ref EnvType, PROD ]
+  CreateDevResources: !Equals [ !Ref EnvType, DEV ]
+
+Resources:
+  SgDefaultProd:
+    Type: AWS::EC2::SecurityGroup
+    Condition: CreateProdResources
+    Properties:
+      GroupDescription: Allow SSH PORT
+      VpcId: vpc-4271752b
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: '-1'
+        CidrIp: 0.0.0.0/0
+
+  SgDefaultDev:
+    Type: AWS::EC2::SecurityGroup
+    Condition: CreateDevResources
+    Properties:
+      GroupDescription: Allow all PORTs
+      VpcId: vpc-4271752b
+      SecurityGroupIngress:
+      - IpProtocol: '-1'
+        #FromPort: '-1'
+        #ToPort: '-1'
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: '-1'
+        CidrIp: 0.0.0.0/0
+
+    
